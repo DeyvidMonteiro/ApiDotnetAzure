@@ -11,19 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{A15B6D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{7B72B65B-BD16-4CCE-8571-66DED7192A79}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{F16F005B-8151-446C-AB0E-1EBE3B1BC224}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipeBook.API", "src\Backend\MyRecipeBook.API\MyRecipeBook.API.csproj", "{E999AB4D-9ABF-40D1-B7D4-8E40E76E9CFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipeBook.API", "src\Backend\MyRecipeBook.API\MyRecipeBook.API.csproj", "{E999AB4D-9ABF-40D1-B7D4-8E40E76E9CFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipeBook.Application", "src\Backend\MyRecipeBook.Application\MyRecipeBook.Application.csproj", "{CBE216A2-8556-4168-9751-58F0B4E010A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipeBook.Application", "src\Backend\MyRecipeBook.Application\MyRecipeBook.Application.csproj", "{CBE216A2-8556-4168-9751-58F0B4E010A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipeBook.Domain", "src\Backend\MyRecipeBook.Domain\MyRecipeBook.Domain.csproj", "{E73A8762-AC5E-4D62-BECA-29FCD38AD1A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipeBook.Domain", "src\Backend\MyRecipeBook.Domain\MyRecipeBook.Domain.csproj", "{E73A8762-AC5E-4D62-BECA-29FCD38AD1A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipeBook.Infrastructure", "src\Backend\MyRecipeBook.Infrastructure\MyRecipeBook.Infrastructure.csproj", "{8BB65AFC-BE28-474A-BAE5-6F4923EF8B96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipeBook.Infrastructure", "src\Backend\MyRecipeBook.Infrastructure\MyRecipeBook.Infrastructure.csproj", "{8BB65AFC-BE28-474A-BAE5-6F4923EF8B96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipeBook.Communication", "src\Shared\MyRecipeBook.Communication\MyRecipeBook.Communication.csproj", "{2FC36570-0739-431B-9B61-33F05959DB1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipeBook.Communication", "src\Shared\MyRecipeBook.Communication\MyRecipeBook.Communication.csproj", "{2FC36570-0739-431B-9B61-33F05959DB1D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipeBook.Exceptions", "src\Shared\MyRecipeBook.Exceptions\MyRecipeBook.Exceptions.csproj", "{51CA36EC-7ABD-4474-AC62-3B88273B3673}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyRecipeBook.Exceptions", "src\Shared\MyRecipeBook.Exceptions\MyRecipeBook.Exceptions.csproj", "{51CA36EC-7ABD-4474-AC62-3B88273B3673}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,7 +60,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A15B6DDB-957D-4805-B23B-2FE0D1ACDA12} = {86F53C7F-D9BB-4732-B677-0256D55BDF45}
 		{7B72B65B-BD16-4CCE-8571-66DED7192A79} = {86F53C7F-D9BB-4732-B677-0256D55BDF45}
-		{F16F005B-8151-446C-AB0E-1EBE3B1BC224} = {86F53C7F-D9BB-4732-B677-0256D55BDF45}
 		{E999AB4D-9ABF-40D1-B7D4-8E40E76E9CFD} = {7B72B65B-BD16-4CCE-8571-66DED7192A79}
 		{CBE216A2-8556-4168-9751-58F0B4E010A0} = {7B72B65B-BD16-4CCE-8571-66DED7192A79}
 		{E73A8762-AC5E-4D62-BECA-29FCD38AD1A9} = {7B72B65B-BD16-4CCE-8571-66DED7192A79}
