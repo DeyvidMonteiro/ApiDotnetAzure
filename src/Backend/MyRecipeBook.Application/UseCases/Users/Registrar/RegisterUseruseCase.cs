@@ -20,8 +20,8 @@ public class RegisterUseruseCase : IRegisterUseruseCase
     public RegisterUseruseCase(
         IUserWriteOnlyRepository writeOnlyRepository, 
         IUserReadOnlyRepository readOnlyRepository,
-        PasswordEncripter passwordEncripter,
         IUnitOfWork unitOfWork,
+        PasswordEncripter passwordEncripter,
         IMapper mapper)
 
     {
@@ -47,7 +47,7 @@ public class RegisterUseruseCase : IRegisterUseruseCase
 
         return new ResponseRegisteredUserJson
         { 
-            Name = request.Name,
+            Name = user.Name,
         };
     }
 
