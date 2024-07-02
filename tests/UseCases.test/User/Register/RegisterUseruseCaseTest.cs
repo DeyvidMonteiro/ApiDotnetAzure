@@ -52,7 +52,7 @@ namespace UseCases.test.User.Register
                 .Where(e => e.ErrorMessages.Count == 1 && e.ErrorMessages.Contains(ResourceMessagesExceptions.NAME_EMPITY));
         }
 
-        private RegisterUseruseCase CreateUseCase(string? email = null)
+        private static RegisterUseruseCase CreateUseCase(string? email = null)
         {
             var mapper = MapperBuilder.Build();
             var passwordEncrypter = PasswordEncripterBuilder.Build();
