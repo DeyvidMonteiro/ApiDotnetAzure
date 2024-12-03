@@ -68,17 +68,33 @@ namespace Validators.Test.User.Register
         }
 
         [Theory]
-        [InlineData(0)]
+
         [InlineData(1)]
         [InlineData(2)]
         [InlineData(3)]
         [InlineData(4)]
         [InlineData(5)]
-        public void Error_pASSWORD_Invalid(int passworLength)
+        public void Error_Password_Invalid(int passworLength)
         {
             var validator = new RegisterUserValidator();
 
             var request = RequestRegisterUserJsonBuilder.Build(passworLength);
+
+            var result = validator.Validate(request);
+
+            result.IsValid.Should().BeFalse();
+
+            result.Errors.Should().ContainSingle()
+                .And.Contain(e => e.ErrorMessage.Equals(ResourceMessagesExceptions.PASSWORD_INVALID));
+        }
+
+        [Fact]
+        public void Error_Password_Empty()
+        {
+            var validator = new RegisterUserValidator();
+
+            var request = RequestRegisterUserJsonBuilder.Build();
+            request.Password = string.Empty;
 
             var result = validator.Validate(request);
 

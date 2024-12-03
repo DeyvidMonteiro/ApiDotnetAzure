@@ -4,56 +4,85 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyRecipeBook.Domain.Repositories;
 using MyRecipeBook.Domain.Repositories.User;
+using MyRecipeBook.Domain.Security.Criptography;
+using MyRecipeBook.Domain.Security.Tokens;
+using MyRecipeBook.Domain.Services.LoggedUser;
 using MyRecipeBook.Infrastructure.DataAccess;
 using MyRecipeBook.Infrastructure.DataAccess.Repositorios;
 using MyRecipeBook.Infrastructure.Extensions;
+using MyRecipeBook.Infrastructure.Security.Cryptography;
+using MyRecipeBook.Infrastructure.Security.Tokens.Access.Generator;
+using MyRecipeBook.Infrastructure.Security.Tokens.Access.Validator;
+using MyRecipeBook.Infrastructure.Services.LoggedUser;
 using System.Reflection;
 
-namespace MyRecipeBook.Infrastructure
+namespace MyRecipeBook.Infrastructure;
+
+public static class DependencyInjectionExtencion
 {
-    public static class DependencyInjectionExtencion
+    public static void AddAInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        public static void AddAInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        AddPasswordEncripter(services, configuration);
+        AddRepositories(services);
+        AddLoggedUser(services);
+        AddTokens(services, configuration);
+
+        if (configuration.IsUnitTestEnviroment())
+            return;
+
+        AddDbContext_MySqlServer(services, configuration);
+        AddFluentMigrator_MySql(services, configuration);
+    }
+    private static void AddDbContext_MySqlServer(IServiceCollection services, IConfiguration configuration)
+    {
+        var connectionString = configuration.ConnectionString();
+        var serverversion = new MySqlServerVersion(new Version(8, 0, 35));
+
+        services.AddDbContext<MyRecipeBookDbContext>(dbContextOptions =>
         {
-            AddRepositories(services);
+            dbContextOptions.UseMySql(connectionString, serverversion);
+        });
+    }
 
-            if (configuration.IsUnitTestEnviroment())
-                return;
+    private static void AddRepositories(IServiceCollection services)
+    {
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            AddDbContext_MySqlServer(services, configuration);
-            AddFluentMigrator_MySql(services, configuration);
-        }
-        private static void AddDbContext_MySqlServer(IServiceCollection services, IConfiguration configuration)
+        services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
+        services.AddScoped<IUserReadOnlyRepository, UserRepository>();
+        services.AddScoped<IUserUpdateOnlyRepository, UserRepository>();
+
+    }
+
+    private static void AddFluentMigrator_MySql(IServiceCollection services, IConfiguration configuration)
+    {
+        var connectionString = configuration.ConnectionString();
+
+        services.AddFluentMigratorCore().ConfigureRunner(options =>
         {
-            var connectionString = configuration.ConnectionString();
-            var serverversion = new MySqlServerVersion(new Version(8, 0, 35));
+            options
+            .AddMySql5()
+            .WithGlobalConnectionString(connectionString)
+            .ScanIn(Assembly.Load("MyRecipeBook.Infrastructure")).For.All();
+        });
+    }
+    private static void AddTokens(IServiceCollection services, IConfiguration configuration)
+    {
+        var expirationTimeMinutes = configuration.GetValue<uint>("Settings:Jwt:ExpirationTimeMinutes");
+        var signingKey = configuration.GetValue<string>("Settings:Jwt:SigningKey");
 
-            services.AddDbContext<MyRecipeBookDbContext>(dbContextOptions =>
-            {
-                dbContextOptions.UseMySql(connectionString, serverversion);
-            });
-        }
+        services.AddScoped<IAccessTokenGenerator>(option => new JwtTokenGenerator(expirationTimeMinutes, signingKey!));
+        services.AddScoped<IAccessTokenValidator>(options => new JwtTokenValidator(signingKey!));
+    }
+    private static void AddLoggedUser(IServiceCollection services)
+    {
+        services.AddScoped<ILoggedUser, LoggedUser>();
+    }
 
-        private static void AddRepositories(IServiceCollection services)
-        {
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+    private static void AddPasswordEncripter(IServiceCollection services, IConfiguration configuration)
+    {
+        var additionKey = configuration.GetValue<string>("Settings:Password:AdditionalKey");
 
-            services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
-            services.AddScoped<IUserReadOnlyRepository, UserRepository>();
-        }
-
-        private static void AddFluentMigrator_MySql(IServiceCollection services, IConfiguration configuration)
-        {
-            var connectionString = configuration.ConnectionString();
-
-            services.AddFluentMigratorCore().ConfigureRunner(options =>
-            {
-                options
-                .AddMySql5()
-                .WithGlobalConnectionString(connectionString)
-                .ScanIn(Assembly.Load("MyRecipeBook.Infrastructure")).For.All();
-            });
-        }        
-
+        services.AddScoped<IPasswordEncripter>(option => new Sha512Encripter(additionKey!));
     }
 }

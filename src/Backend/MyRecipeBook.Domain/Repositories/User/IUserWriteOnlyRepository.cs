@@ -1,7 +1,6 @@
-﻿namespace MyRecipeBook.Domain.Repositories.User
+﻿namespace MyRecipeBook.Domain.Repositories.User;
+
+public interface IUserWriteOnlyRepository
 {
-    public interface IUserWriteOnlyRepository
-    {
-        public Task Add(Entities.User user);
-    }
+    public Task Add(Entities.User user);
 }

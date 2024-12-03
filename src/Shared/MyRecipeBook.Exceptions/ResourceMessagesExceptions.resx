@@ -124,7 +124,7 @@
     <value>The e-mail must nao be empty.</value>
   </data>
   <data name="EMAIL_INVALID" xml:space="preserve">
-    <value>The e-mail addres is invalid.</value>
+    <value>Email already registered.</value>
   </data>
   <data name="NAME_EMPITY" xml:space="preserve">
     <value>The name cannot be empty.</value>
@@ -132,7 +132,22 @@
   <data name="PASSWORD_EMPITYB" xml:space="preserve">
     <value>password must be longer than 6 caracters.</value>
   </data>
+  <data name="PASSWORD_INVALID" xml:space="preserve">
+    <value>password must be longer than 6 caracters.</value>
+  </data>
+  <data name="PASSWORD_DIFFERENT_CURRENT_PASSWORD" xml:space="preserve">
+    <value>password different from current password.</value>
+  </data>
   <data name="UNKNOWN_ERROR" xml:space="preserve">
     <value>Unknown error.</value>
+  </data>
+  <data name="EMAIL_OR_PASSWORD_INVALID" xml:space="preserve">
+    <value>Invalid email and/or password</value>
+  </data>
+  <data name="NO_TOKEN" xml:space="preserve">
+    <value>No token here.</value>
+  </data>
+  <data name="USER_WITHOUT_PERMISSION_ACCESS_RESOURCE" xml:space="preserve">
+    <value>User does not have permission to access the resource.</value>
   </data>
 </root>
