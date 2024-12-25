@@ -7,5 +7,4 @@ public class User : EntityBase
     public string Password { get; set; } = string.Empty;
     public Guid UserIdentifier { get; set; }
 
-
 }

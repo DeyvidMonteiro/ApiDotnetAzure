@@ -14,7 +14,7 @@ public class GetUserProfileInvalidTokenTest : MyRecipeBookClassFixture
     [Fact]
     public async Task Error_Token_Invalid()
     {
-        var response = await DoGet(METHOD, token : "tokenInvalid");
+        var response = await DoGet(method :METHOD, token : "tokenInvalid");
 
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
@@ -32,7 +32,7 @@ public class GetUserProfileInvalidTokenTest : MyRecipeBookClassFixture
     {
         var token = JwtTokenGeneratorBuilder.Build().Generate(Guid.NewGuid());
 
-        var response = await DoGet(METHOD, token);
+        var response = await DoGet(method: METHOD, token: token); 
 
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }

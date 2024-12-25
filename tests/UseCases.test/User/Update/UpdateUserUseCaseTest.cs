@@ -9,7 +9,7 @@ using CommonTestUtilities.Repositories;
 using CommonTestUtilities.LoggedUser;
 using MyRecipeBook.Domain.Extencions;
 
-namespace UseCases.test.Update;
+namespace UseCases.test.User.Update;
 
 public class UpdateUserUseCaseTest
 {
@@ -42,8 +42,8 @@ public class UpdateUserUseCaseTest
         Func<Task> act = async () => { await useCase.Execute(request); };
 
         (await act.Should().ThrowAsync<ErrorOnValidationException>())
-            .Where(e => e.ErrorMessages.Count == 1 &&
-                e.ErrorMessages.Contains(ResourceMessagesExceptions.NAME_EMPITY));
+            .Where(e => e.GetErrosMessages().Count == 1 &&
+                e.GetErrosMessages().Contains(ResourceMessagesExceptions.NAME_EMPITY));
 
         user.Name.Should().NotBe(request.Name);
         user.Email.Should().NotBe(request.Email);
@@ -55,14 +55,14 @@ public class UpdateUserUseCaseTest
         (var user, _) = UserBuilder.Build();
 
         var request = RequestUpdateUserJsonBuilder.Build();
-     
+
         var useCase = CreateUseCase(user, request.Email);
 
         Func<Task> act = async () => { await useCase.Execute(request); };
 
         await act.Should().ThrowAsync<ErrorOnValidationException>()
-            .Where(e => e.ErrorMessages.Count == 1 &&
-                e.ErrorMessages.Contains(ResourceMessagesExceptions.EMAIL_ALREADY_REGISTERED));
+            .Where(e => e.GetErrosMessages().Count == 1 &&
+                e.GetErrosMessages().Contains(ResourceMessagesExceptions.EMAIL_ALREADY_REGISTERED));
 
         user.Name.Should().NotBe(request.Name);
         user.Email.Should().NotBe(request.Email);
@@ -78,12 +78,12 @@ public class UpdateUserUseCaseTest
 
         var userReadOnlyRepoitoryBuilder = new UserReadOnlyRepositoryBuilder();
 
-        if(string.IsNullOrEmpty(email).IsFalse())
+        if (string.IsNullOrEmpty(email).IsFalse())
             userReadOnlyRepoitoryBuilder.ExistActiveUserWithEmail(email!);
 
         return new UpdateUserUseCase(loggedUser, userUpdateRepository, userReadOnlyRepoitoryBuilder.Build(), unitOfWok);
 
-        
+
     }
 
 

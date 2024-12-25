@@ -150,4 +150,40 @@
   <data name="USER_WITHOUT_PERMISSION_ACCESS_RESOURCE" xml:space="preserve">
     <value>User does not have permission to access the resource.</value>
   </data>
+  <data name="RECIPE_NOT_FOUND" xml:space="preserve">
+    <value>Recipe not found.</value>
+  </data>
+  <data name="RECIPE_TITLE_EMPTY" xml:space="preserve">
+    <value>Title cannot be empty.</value>
+  </data>
+  <data name="COOKING_TIME_NOT_SUPPORTED" xml:space="preserve">
+    <value>Value not supported.</value>
+  </data>
+  <data name="DIFFICULTY_LEVEL_NOT_SUPPORTED" xml:space="preserve">
+    <value>Difficulty not supported.</value>
+  </data>
+  <data name="AT_LAST_ONE_INGREDIENT" xml:space="preserve">
+    <value>At least one ingredient is required to proceed.</value>
+  </data>
+  <data name="AT_LAST_ONE_INSTRUCTION" xml:space="preserve">
+    <value>At least one instruction is required to proceed.</value>
+  </data>
+  <data name="DISH_TYPE_NOT_SUPPORTED" xml:space="preserve">
+    <value>The selected dish type is not supported.</value>
+  </data>
+  <data name="INGREDIENT_EMPTY" xml:space="preserve">
+    <value>The ingredient list cannot be empty.</value>
+  </data>
+  <data name="NON_NEGATIVE_INSTRUCTION_STEP" xml:space="preserve">
+    <value>The step number in the instruction cannot be less than zero.</value>
+  </data>
+  <data name="INSTRUCTION_EMPTY" xml:space="preserve">
+    <value>The instruction list cannot be empty.</value>
+  </data>
+  <data name="INSTRUCTION_EXCEEDS_LIMIT_CHARACTERS" xml:space="preserve">
+    <value>Instruction exceeds maximum character limit.</value>
+  </data>
+  <data name="TWO_OR_MORE_INSTRUCTIONS_SAME_ORDERS" xml:space="preserve">
+    <value>Two or more instructions have the same order.</value>
+  </data>
 </root>

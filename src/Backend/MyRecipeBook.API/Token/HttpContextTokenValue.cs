@@ -17,4 +17,5 @@ public class HttpContextTokenValue : ITokenProvider
 
         return authentication["Bearer ".Length..].Trim();
     }
+
 }

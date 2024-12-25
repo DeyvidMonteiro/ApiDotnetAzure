@@ -150,4 +150,40 @@
   <data name="USER_WITHOUT_PERMISSION_ACCESS_RESOURCE" xml:space="preserve">
     <value>O usuário não tem permissão para acessar o recurso.</value>
   </data>
+  <data name="RECIPE_NOT_FOUND" xml:space="preserve">
+    <value>Receita não encontrada.</value>
+  </data>
+  <data name="RECIPE_TITLE_EMPTY" xml:space="preserve">
+    <value>O titulo não pode estar vazio.</value>
+  </data>
+  <data name="COOKING_TIME_NOT_SUPPORTED" xml:space="preserve">
+    <value>Valor não suportado.</value>
+  </data>
+  <data name="DIFFICULTY_LEVEL_NOT_SUPPORTED" xml:space="preserve">
+    <value>Dificuldade não suportada.</value>
+  </data>
+  <data name="AT_LAST_ONE_INGREDIENT" xml:space="preserve">
+    <value>É necessário pelo menos um ingrediente para continuar.</value>
+  </data>
+  <data name="AT_LAST_ONE_INSTRUCTION" xml:space="preserve">
+    <value>É necessário pelo menos uma instrução para continuar.</value>
+  </data>
+  <data name="DISH_TYPE_NOT_SUPPORTED" xml:space="preserve">
+    <value>O tipo de prato selecionado não é suportado.</value>
+  </data>
+  <data name="INGREDIENT_EMPTY" xml:space="preserve">
+    <value>A lista de ingredientes não pode estar vazia.</value>
+  </data>
+  <data name="NON_NEGATIVE_INSTRUCTION_STEP" xml:space="preserve">
+    <value>O número da etapa da instrução não pode ser menor que zero.</value>
+  </data>
+  <data name="INSTRUCTION_EMPTY" xml:space="preserve">
+    <value>A lista de instruções não pode estar vazia.</value>
+  </data>
+  <data name="INSTRUCTION_EXCEEDS_LIMIT_CHARACTERS" xml:space="preserve">
+    <value>Instrução excede o limite maximo de caracteres.</value>
+  </data>
+  <data name="TWO_OR_MORE_INSTRUCTIONS_SAME_ORDERS" xml:space="preserve">
+    <value>Duas ou mais instruçoes tem a mesma ordem.</value>
+  </data>
 </root>
