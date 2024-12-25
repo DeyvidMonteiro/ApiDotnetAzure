@@ -2,10 +2,10 @@
 using FluentAssertions;
 using MyRecipeBook.Application.UseCases.Recipe;
 using MyRecipeBook.Communication.Enums;
-using MyRecipeBook.Domain.Entities;
 using MyRecipeBook.Exceptions;
 using Xunit;
-using DishType = MyRecipeBook.Communication.Enums.DishType;
+using System.Diagnostics.CodeAnalysis;
+
 
 namespace Validators.Test.Recipe;
 
@@ -56,6 +56,7 @@ public class RecipeValidatorTest
     [InlineData(null)]
     [InlineData("      ")]
     [InlineData("")]
+    [SuppressMessage("Usage", "xUnit1012:Null should only be used for nullable parameters", Justification = "<isso é um teste unit>")]
     public void Error_Empty_Title(string title)
     {
         var validate = new RecipeValidator();
@@ -155,6 +156,8 @@ public class RecipeValidatorTest
     [InlineData("      ")]
     [InlineData("")]
     [InlineData(null)]
+    [SuppressMessage("Usage", "xUnit1012:Null should only be used for nullable parameters", Justification = "<isso é um teste unit>")]
+
     public void Error_Empty_Value_Ingredients(string ingredients)
     {
         var request = RequestRecipeJsonBuilder.Build();
@@ -200,6 +203,7 @@ public class RecipeValidatorTest
     [InlineData("    ")]
     [InlineData("")]
     [InlineData(null)]
+    [SuppressMessage("Usage", "xUnit1012:Null should only be used for nullable parameters", Justification = "<isso é um teste unit>")]
     public void Error_Empty_Value_Instructions(string instruction)
     {
         var request = RequestRecipeJsonBuilder.Build();
