@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyRecipeBook.API.Attributes;
 using MyRecipeBook.Application.UseCases.Users.ChangePassword;
+using MyRecipeBook.Application.UseCases.Users.Delete;
 using MyRecipeBook.Application.UseCases.Users.Profile;
 using MyRecipeBook.Application.UseCases.Users.Registrar;
 using MyRecipeBook.Application.UseCases.Users.Update;
@@ -59,6 +60,18 @@ public class UserController : MyRecipeBookBaseController
 
         return NoContent();
     }
+
+    [HttpDelete]
+    [Obsolete("Este endpoint está em desenvolvimento e não deve ser usado ainda.")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [AuthenticatedUser]
+    public async Task<IActionResult> Delete([FromServices] IRequestDeleteUserUseCase useCase)
+    {
+        await useCase.Execute();
+
+        return NoContent();
+    }
+
 
 
 }

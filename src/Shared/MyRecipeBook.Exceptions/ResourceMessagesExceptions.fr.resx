@@ -150,6 +150,18 @@
   <data name="USER_WITHOUT_PERMISSION_ACCESS_RESOURCE" xml:space="preserve">
     <value>L'utilisateur n'a pas l'autorisation d'accéder à la ressource.</value>
   </data>
+  <data name="ONLY_IMAGES_ACCEPTED" xml:space="preserve">
+    <value>Seules les images (PNG, JPG, JPEG) sont acceptées.</value>
+  </data>
+  <data name="INGREDIENT_NOT_FOLLOWING_PATTERN" xml:space="preserve">
+    <value>Format d'ingrédient non valide. Veuillez vous assurer que l'ingrédient respecte notre modèle.</value>
+  </data>
+  <data name="DUPLICATED_INGREDIENTS_IN_LIST" xml:space="preserve">
+    <value>Les ingrédients en double ne sont pas autorisés dans la liste.</value>
+  </data>
+  <data name="INVALID_NUMBER_INGREDIENTS" xml:space="preserve">
+    <value>Nombre d'ingrédients invalide. La liste doit contenir entre 1 et 5 ingrédients.</value>
+  </data>
   <data name="RECIPE_NOT_FOUND" xml:space="preserve">
     <value>Recette introuvable.</value>
   </data>
