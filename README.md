@@ -25,8 +25,6 @@ Este é um projeto de API desenvolvido em **.NET** seguindo boas práticas de de
 - **Git & GitFlow**
 - **Injeção de Dependência**
 
-## 🚀 Como Rodar o Projeto
-
 ### 🔹 Pré-requisitos
 
 - [.NET SDK 8+](https://dotnet.microsoft.com/en-us/download)
