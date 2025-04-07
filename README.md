@@ -30,5 +30,3 @@ Este é um projeto de API desenvolvido em **.NET** seguindo boas práticas de de
 - [.NET SDK 8+](https://dotnet.microsoft.com/en-us/download)
 - [MySQL](https://www.mysql.com/)
 
-
- **Projeto em desenvolvimento! Futuramente, será implementado login com Google e integração com Chat-GPT.** 
